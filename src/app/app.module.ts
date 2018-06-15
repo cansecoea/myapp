@@ -11,6 +11,15 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+// Mapas
+import { AgmCoreModule } from '@agm/core';
+
+//Plugins
+import { Geolocation } from '@ionic-native/geolocation';
+import { Diagnostic } from '@ionic-native/diagnostic';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -21,7 +30,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBCDI_kH7HDoP7xtk-nzDXjb9UIZi2xXs8'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +46,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Geolocation,
+    Diagnostic,
+    AndroidPermissions
   ]
 })
 export class AppModule {}
